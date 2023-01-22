@@ -4,9 +4,11 @@ import CustomerListPage from './pages/CustomerListPage';
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <CustomerListPage />
+    <div className='container dark'>
+      <div className='app'>
+        <Header />
+        <CustomerListPage />
+      </div>
     </div>
   );
 }

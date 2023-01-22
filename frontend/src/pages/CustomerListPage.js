@@ -17,8 +17,12 @@ const CustomerListPage = () => {
     }
 
     return (
-        <div>
-            <div>
+        <div className='customers'>
+            <div className='customers-header'>
+                <h2 className='customers-title'>&#9782; Mamas</h2>
+                <p className='customers-count'>{customers.length}</p>
+            </div>
+            <div className='customer-list'>
                 {customers.map((customer, index) => (
                     <ListItem key={index} customer={customer} />
                 ))}
