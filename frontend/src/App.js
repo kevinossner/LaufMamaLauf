@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import CustomerListPage from './pages/CustomerListPage';
 import CustomerPage from './pages/CustomerPage';
+import CreateCustomerPage from './pages/CreateCustomerPage';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Routes>
             <Route path="/" element={<CustomerListPage />} />
             <Route path="/customer/:id" element={<CustomerPage />} />
+            <Route path="/customer/new" element={<CreateCustomerPage />} />
           </Routes>
     </BrowserRouter>
       </div>

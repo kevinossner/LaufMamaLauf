@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
 
 const CustomerPage = () => {
 
@@ -7,19 +9,29 @@ const CustomerPage = () => {
   let [customer, setCustomer] = useState(null)
 
   useEffect(() => {
-    getCustomer()
+    let getCustomer = async () => {
+      let response = await fetch(`/api/customer/${id}/`)
+      let data = await response.json()
+      setCustomer(data)
+    }
+    getCustomer();
   }, [id])
-
-  let getCustomer = async () => {
-    let response = await fetch(`/api/customer/${id}/`)
-    let data = await response.json()
-    setCustomer(data)
-  }
 
   return (
     <div>
-        <h1>{customer?.first_name} {customer?.last_name}</h1>
-        <p>{customer?.created_at}</p>
+      <Grid container spacing={1}>
+          <Grid item xs={12} align='center'>
+            <h1>{customer?.first_name} {customer?.last_name}</h1>
+          </Grid>
+          <Grid item xs={12} align='center'>
+            <p>{customer?.created_at}</p>
+          </Grid>
+          <Grid item xs={12} align='center'>
+              <Button variant='contained' to='/' component={Link}>
+                  Back
+              </Button>
+          </Grid>
+      </Grid>
     </div>
   )
 }

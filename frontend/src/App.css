@@ -167,7 +167,7 @@ a {
 
 .customers-list-item p {
   font-size: 14px;
-  color: var(--color-light);
+  color: var(--color-text);
 }
 
 .floating-button {
@@ -190,6 +190,20 @@ a {
 
 .floating-button > svg {
   fill: var(--color-bg);
+}
+
+.MuiButtonBase-root {
+  background-color: var(--color-main)!important;
+  color: var(--color-bg)!important;
+}
+
+.MuiInputBase-root * {
+  border-color: var(--color-main)!important;
+  color: var(--color-text)!important;
+}
+
+.MuiInputBase-input, .MuiFormLabel-root {
+  color: var(--color-text)!important;
 }
 
 

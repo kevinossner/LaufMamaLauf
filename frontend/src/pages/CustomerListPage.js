@@ -1,12 +1,22 @@
 import React, {useState, useEffect} from 'react'
 import ListItem from '../components/ListItem'
+import AddButton from '../components/AddButton'
 
 const CustomerListPage = () => {
     let [customers, setCustomers] = useState([])
+    let [time, setTime] = useState(Date.now());
 
     useEffect(() => {
         getCustomers()
-    }, [])
+    }, [time])
+
+
+    useEffect(() => {
+      let interval = setInterval(() => setTime(Date.now()), 5*1000);
+      return () => {
+        clearInterval(interval);
+      };
+    }, []);
 
     let getCustomers = async () => {
         let response = await fetch('/api/customer/')
@@ -25,6 +35,7 @@ const CustomerListPage = () => {
                     <ListItem key={index} customer={customer} />
                 ))}
             </div>
+            <AddButton />
         </div>
     )
 }
